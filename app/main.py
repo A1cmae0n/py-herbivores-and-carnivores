@@ -13,6 +13,7 @@ class Animal():
             f"Health: {self.health}, "
             f"Hidden: {self.hidden}}}"
         )
+
     def die(self) -> None:
         if self in Animal.alive:
             Animal.alive.remove(self)
@@ -29,4 +30,3 @@ class Carnivore(Animal):
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
-
