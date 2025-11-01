@@ -22,6 +22,11 @@ class Animal():
         if self in Animal.alive:
             Animal.alive.remove(self)
 
+    def take_damage(self, amount: int) -> None:
+        self.health -= amount
+        if self.health <= 0:
+            self.die()
+
 
 class Carnivore(Animal):
     def bite(
@@ -29,9 +34,7 @@ class Carnivore(Animal):
         prey: Animal
     ) -> None:
         if isinstance(prey, Herbivore) and prey.hidden is False:
-            prey.health -= 50
-        if prey.health <= 0:
-            prey.die()
+            prey.take_damage(50)
 
 
 class Herbivore(Animal):
